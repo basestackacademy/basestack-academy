@@ -7,6 +7,7 @@
 <meta name="description" content="10-Week AWS Cloud Engineering Accelerator. Structured. Beginner-friendly. 100 slots only. Cohort 1 — April 2026. Nigeria's only free cloud engineering programme.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
@@ -115,18 +116,6 @@ nav {
 .hero-note { margin-top:20px; font-size:13px; color:rgba(255,255,255,0.4); letter-spacing:.5px; }
 .hero-note span { color:var(--ora2); }
 
-/* Code gate prompt */
-.code-prompt {
-  margin-top:28px;
-  display:inline-flex; align-items:center; gap:12px;
-  background:rgba(255,87,34,0.1);
-  border:1px solid rgba(255,87,34,0.3);
-  border-radius:6px; padding:14px 20px;
-}
-.cp-icon { font-size:18px; }
-.cp-text { font-size:14px; color:rgba(255,255,255,0.75); }
-.cp-text strong { color:var(--orange); font-weight:700; }
-
 /* HERO CARD */
 .hero-card {
   background:rgba(255,255,255,0.04);
@@ -146,43 +135,20 @@ nav {
 .hc-stat .n { font-family:'DM Serif Display',serif; font-size:40px; color:var(--orange); line-height:1; }
 .hc-stat .l { font-size:12px; color:var(--muted); margin-top:4px; letter-spacing:1px; }
 .hc-divider { height:1px; background:rgba(255,255,255,0.07); margin:24px 0; }
-.hc-features { display:flex; flex-direction:column; gap:12px; }
+.hc-features { display:flex; flex-direction:column; gap:12px; margin-bottom:28px; }
 .hc-feat { display:flex; align-items:center; gap:12px; }
 .hc-feat .icon { width:28px; height:28px; border-radius:4px; background:rgba(255,87,34,0.15); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
 .hc-feat .txt { font-size:14px; color:rgba(255,255,255,0.75); }
 
-/* Code input box on card */
-.hc-code-box { margin-top:24px; }
-.hc-code-label { font-size:11px; color:var(--ora2); letter-spacing:3px; font-weight:600; margin-bottom:8px; }
-.hc-code-input { display:flex; gap:8px; }
-.hc-code-input input {
-  flex:1; background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,87,34,0.35);
-  border-radius:4px; padding:12px 16px;
-  color:#FFF; font-size:16px; font-weight:700;
-  letter-spacing:3px; text-transform:uppercase;
-  font-family:'DM Sans',sans-serif; outline:none;
+.hc-apply-btn {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  width:100%; background:var(--orange); color:#FFF; text-decoration:none;
+  padding:16px; border-radius:6px; font-size:15px; font-weight:700;
+  font-family:'DM Sans',sans-serif; transition:background .2s, transform .15s;
+  border:none; cursor:pointer;
 }
-.hc-code-input input::placeholder { color:rgba(255,255,255,0.25); font-weight:300; letter-spacing:1px; font-size:13px; text-transform:none; }
-.hc-code-input input:focus { border-color:var(--orange); }
-.hc-code-input button {
-  background:var(--orange); color:#FFF;
-  border:none; border-radius:4px;
-  padding:12px 18px; font-size:14px; font-weight:700;
-  cursor:pointer; transition:background .2s;
-  font-family:'DM Sans',sans-serif; white-space:nowrap;
-}
-.hc-code-input button:hover { background:#E64A19; }
-.hc-code-note { font-size:11px; color:rgba(255,255,255,0.3); margin-top:8px; text-align:center; }
-
-/* Code error state */
-.code-error {
-  display:none; margin-top:10px;
-  background:rgba(220,50,50,0.12); border:1px solid rgba(220,50,50,0.35);
-  border-radius:4px; padding:10px 14px;
-  font-size:13px; color:#FF8A8A; line-height:1.5;
-}
-.code-error.show { display:block; }
+.hc-apply-btn:hover { background:#E64A19; transform:translateY(-1px); }
+.hc-note { font-size:11px; color:rgba(255,255,255,0.3); margin-top:10px; text-align:center; letter-spacing:.5px; }
 
 /* ── SECTIONS ── */
 section { padding:100px 5%; }
@@ -236,17 +202,6 @@ section { padding:100px 5%; }
 .pe-item .pe-label { font-size:11px;color:var(--orange);letter-spacing:3px;font-weight:600;margin-bottom:8px; }
 .pe-item .pe-text { font-size:15px;color:var(--text);line-height:1.5; }
 
-/* ── NOTICE BOX ── */
-.notice-box {
-  margin-top:48px;
-  background:rgba(255,87,34,0.05);
-  border:1px solid rgba(255,87,34,0.2);
-  border-left:4px solid var(--orange);
-  border-radius:6px; padding:20px 24px;
-  font-size:14px; color:#556677; line-height:1.6;
-}
-.notice-box strong { color:var(--text); }
-
 /* ── HOW IT WORKS ── */
 .how { background:var(--grey); }
 .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:60px; position:relative; }
@@ -256,42 +211,130 @@ section { padding:100px 5%; }
 .step-title { font-family:'DM Serif Display',serif; font-size:18px; color:var(--text); margin-bottom:12px; }
 .step-body { font-size:14px;color:#556677;line-height:1.6; }
 
+/* ── REFERRAL FLYER SECTION ── */
+.flyer-section { background:var(--navy); position:relative; overflow:hidden; }
+.flyer-section .section-title { color:#FFF; }
+.flyer-section .section-sub { color:var(--muted); }
+.flyer-section-grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,87,34,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,87,34,0.03) 1px, transparent 1px);
+  background-size:80px 80px; pointer-events:none;
+}
+
+.flyer-layout {
+  display:grid; grid-template-columns:400px 1fr;
+  gap:48px; align-items:start; margin-top:60px;
+}
+
+.flyer-form-panel {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px; padding:36px 32px;
+  position:sticky; top:88px;
+}
+.flyer-form-panel h3 {
+  font-family:'DM Serif Display',serif;
+  font-size:24px; color:#FFF; margin-bottom:8px;
+}
+.flyer-form-panel > p {
+  font-size:14px; color:rgba(255,255,255,0.45); line-height:1.6; margin-bottom:28px;
+}
+
+.ff-field { margin-bottom:20px; }
+.ff-field label {
+  display:block; font-size:11px; color:var(--ora2);
+  letter-spacing:3px; font-weight:600;
+  text-transform:uppercase; margin-bottom:8px;
+}
+.ff-field input {
+  width:100%;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,87,34,0.3);
+  border-radius:6px; padding:14px 16px;
+  color:#FFF; font-size:16px;
+  font-family:'DM Sans',sans-serif;
+  outline:none; transition:border-color .2s;
+}
+.ff-field input:focus { border-color:var(--orange); }
+.ff-field input::placeholder { color:rgba(255,255,255,0.2); font-size:14px; }
+.ff-hint { font-size:12px; color:rgba(255,255,255,0.3); margin-top:6px; }
+.ff-error {
+  display:none; font-size:13px; color:#FF8A8A;
+  background:rgba(220,50,50,0.1); border:1px solid rgba(220,50,50,0.3);
+  border-radius:4px; padding:10px 12px; margin-top:8px;
+}
+.ff-error.show { display:block; }
+
+.ff-divider { height:1px; background:rgba(255,255,255,0.07); margin:24px 0; }
+
+.btn-flyer-gen {
+  width:100%; background:var(--orange); color:#FFF;
+  border:none; border-radius:6px;
+  padding:16px; font-size:15px; font-weight:700;
+  font-family:'DM Sans',sans-serif;
+  cursor:pointer; transition:background .2s, transform .15s;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+}
+.btn-flyer-gen:hover { background:#E64A19; transform:translateY(-1px); }
+.btn-flyer-gen:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+
+.btn-flyer-dl {
+  display:none; width:100%; background:transparent;
+  border:1px solid rgba(255,87,34,0.5); color:var(--ora2);
+  border-radius:6px; padding:14px; font-size:14px; font-weight:600;
+  font-family:'DM Sans',sans-serif; cursor:pointer;
+  transition:all .2s; margin-top:12px;
+  align-items:center; justify-content:center; gap:8px;
+}
+.btn-flyer-dl:hover { background:rgba(255,87,34,0.1); border-color:var(--orange); color:#FFF; }
+.btn-flyer-dl.visible { display:flex; }
+
+.flyer-how {
+  margin-top:24px; background:rgba(255,87,34,0.06);
+  border:1px solid rgba(255,87,34,0.15); border-radius:6px; padding:18px 20px;
+}
+.flyer-how h4 { font-size:10px; color:var(--ora2); letter-spacing:3px; font-weight:600; text-transform:uppercase; margin-bottom:12px; }
+.flyer-how-steps { display:flex; flex-direction:column; gap:10px; }
+.flyer-how-step { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:rgba(255,255,255,0.5); line-height:1.4; }
+.flyer-how-step .n { width:20px; height:20px; border-radius:50%; background:rgba(255,87,34,0.3); color:var(--ora2); font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+
+/* Preview */
+.flyer-preview-panel {}
+.flyer-preview-label { font-size:11px; color:rgba(255,255,255,0.3); letter-spacing:3px; font-weight:600; text-transform:uppercase; margin-bottom:16px; }
+.flyer-preview-wrap {
+  width:100%; aspect-ratio:1;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px; overflow:hidden;
+  display:flex; align-items:center; justify-content:center; position:relative;
+}
+.flyer-placeholder { text-align:center; padding:40px; }
+.flyer-placeholder .icon { font-size:48px; margin-bottom:16px; opacity:.35; }
+.flyer-placeholder p { font-size:15px; color:rgba(255,255,255,0.25); line-height:1.5; }
+#flyerPreviewImg { width:100%; height:100%; object-fit:contain; display:none; }
+.flyer-generating { display:none; flex-direction:column; align-items:center; gap:16px; text-align:center; }
+.flyer-generating .spinner { width:40px; height:40px; border:3px solid rgba(255,87,34,0.2); border-top-color:var(--orange); border-radius:50%; animation:spin .8s linear infinite; }
+.flyer-generating p { font-size:14px; color:rgba(255,255,255,0.4); }
+@keyframes spin { to { transform:rotate(360deg); } }
+.flyer-share-note { margin-top:14px; font-size:13px; color:rgba(255,255,255,0.25); line-height:1.6; text-align:center; }
+
 /* ── CTA ── */
 .cta-section { background:linear-gradient(135deg,var(--orange),#E64A19); padding:100px 5%; text-align:center; }
 .cta-section h2 { font-family:'DM Serif Display',serif; font-size:clamp(40px,5vw,70px); color:#FFF; line-height:1; margin-bottom:20px; }
 .cta-section p { font-size:20px;color:rgba(255,255,255,0.8);font-weight:300;margin-bottom:44px; }
-
-.cta-code-wrap { display:flex; flex-direction:column; align-items:center; gap:16px; }
-.cta-input-row { display:flex; gap:0; max-width:520px; width:100%; }
-.cta-input-row input {
-  flex:1; padding:18px 24px;
-  background:rgba(255,255,255,0.15);
-  border:2px solid rgba(255,255,255,0.4);
-  border-right:none;
-  border-radius:4px 0 0 4px;
-  color:#FFF; font-size:18px; font-weight:700;
-  letter-spacing:3px; text-transform:uppercase;
-  font-family:'DM Sans',sans-serif; outline:none;
+.cta-btn-wrap { display:flex; flex-direction:column; align-items:center; gap:12px; }
+.cta-btn-wrap .btn-cta-main {
+  display:inline-flex; align-items:center; gap:10px;
+  background:#FFF; color:var(--orange); text-decoration:none;
+  padding:20px 56px; border-radius:4px;
+  font-size:18px; font-weight:800;
+  transition:background .2s, color .2s, transform .15s;
+  font-family:'DM Sans',sans-serif;
 }
-.cta-input-row input::placeholder { color:rgba(255,255,255,0.4); font-weight:300; font-size:14px; letter-spacing:1px; text-transform:none; }
-.cta-input-row input:focus { border-color:#FFF; }
-.cta-input-row button {
-  background:#FFF; color:var(--orange);
-  border:2px solid #FFF; border-left:none;
-  border-radius:0 4px 4px 0;
-  padding:18px 32px; font-size:16px; font-weight:700;
-  cursor:pointer; transition:all .2s;
-  font-family:'DM Sans',sans-serif; white-space:nowrap;
-}
-.cta-input-row button:hover { background:var(--navy); color:#FFF; border-color:var(--navy); }
+.cta-btn-wrap .btn-cta-main:hover { background:var(--navy); color:#FFF; transform:translateY(-2px); }
 .cta-note { font-size:13px; color:rgba(255,255,255,0.55); letter-spacing:.5px; }
-.cta-error {
-  display:none; max-width:520px; width:100%;
-  background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.3);
-  border-radius:4px; padding:12px 16px;
-  font-size:14px; color:#FFF; text-align:left; line-height:1.5;
-}
-.cta-error.show { display:block; }
 
 /* ── FOOTER ── */
 footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,34,0.1); }
@@ -301,6 +344,79 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
 .footer-links { display:flex; gap:24px; }
 .footer-links a { font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color .2s; }
 .footer-links a:hover { color:rgba(255,255,255,0.8); }
+
+/* ── HIDDEN FLYER STAGE ── */
+.flyer-stage {
+  position:fixed; top:-9999px; left:-9999px;
+  width:1080px; height:1080px;
+  pointer-events:none; z-index:-1;
+}
+.flyer-el {
+  width:1080px; height:1080px;
+  position:relative; overflow:hidden;
+  background:#0A2342;
+}
+.flyer-el::before {
+  content:''; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,87,34,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,87,34,0.045) 1px, transparent 1px);
+  background-size:72px 72px; z-index:0;
+}
+.f-topbar { position:absolute; top:0; left:0; right:0; height:7px; background:linear-gradient(90deg,#FF5722,#FF8A50,#FF5722); z-index:10; }
+.f-slash { position:absolute; top:-60px; right:120px; width:3px; height:1300px; background:linear-gradient(180deg,transparent 5%,rgba(255,87,34,0.18) 30%,rgba(255,87,34,0.18) 70%,transparent 95%); transform:rotate(12deg); z-index:0; }
+.f-slash2 { position:absolute; top:-60px; right:180px; width:1px; height:1300px; background:linear-gradient(180deg,transparent 5%,rgba(255,87,34,0.09) 30%,rgba(255,87,34,0.09) 70%,transparent 95%); transform:rotate(12deg); z-index:0; }
+
+.f-logo { position:absolute; top:56px; left:64px; display:flex; align-items:center; gap:16px; z-index:5; }
+.f-logo-slabs { display:flex; flex-direction:column; gap:5px; }
+.f-logo-slabs span { display:block; height:9px; background:#FF5722; transform:skewX(-14deg); transform-origin:left center; }
+.f-logo-slabs span:nth-child(1){width:42px;opacity:.35;margin-left:8px}
+.f-logo-slabs span:nth-child(2){width:34px;opacity:.65;margin-left:4px}
+.f-logo-slabs span:nth-child(3){width:26px}
+.f-logo-words { display:flex; flex-direction:column; line-height:1; }
+.f-logo-words .base { font-family:'DM Serif Display',serif; font-size:30px; color:#FFF; letter-spacing:2px; }
+.f-logo-words .stack { font-family:'DM Serif Display',serif; font-size:30px; color:#FF5722; letter-spacing:2px; }
+.f-logo-words .acad { font-size:9px; color:#FF8A50; letter-spacing:6px; font-weight:300; margin-top:3px; }
+
+.f-cohort { position:absolute; top:56px; right:64px; z-index:5; background:rgba(255,87,34,0.1); border:1.5px solid rgba(255,87,34,0.35); border-radius:5px; padding:10px 20px; text-align:center; }
+.f-cohort .c1{font-size:10px;color:#FF8A50;letter-spacing:4px;font-weight:600}
+.f-cohort .c2{font-family:'DM Serif Display',serif;font-size:26px;color:#FFF}
+.f-cohort .c3{font-size:10px;color:#556677;letter-spacing:2px}
+
+.f-badge { position:absolute; top:168px; left:64px; z-index:5; display:flex; align-items:center; gap:12px; }
+.f-badge .dot{width:10px;height:10px;border-radius:50%;background:#FF5722;flex-shrink:0}
+.f-badge .txt{font-size:12px;color:#FF8A50;letter-spacing:4px;font-weight:600;text-transform:uppercase}
+
+.f-headline { position:absolute; top:210px; left:64px; right:64px; z-index:5; }
+.f-headline h1 { font-family:'DM Serif Display',serif; font-size:106px; line-height:.9; color:#FFF; }
+.f-headline h1 em { color:#FF5722; font-style:italic; }
+.f-headline .sub { margin-top:28px; font-size:20px; color:#7899BB; font-weight:300; line-height:1.5; max-width:660px; }
+.f-headline .sub strong { color:#FFF; font-weight:600; }
+
+.f-stats { position:absolute; top:588px; left:64px; right:64px; z-index:5; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.f-stat { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.07); border-top:2.5px solid #FF5722; padding:18px 16px; border-radius:4px; }
+.f-stat .n{font-family:'DM Serif Display',serif;font-size:34px;color:#FF5722;line-height:1}
+.f-stat .u{font-size:13px;color:#FF8A50;letter-spacing:1px}
+.f-stat .l{font-size:10px;color:#445566;margin-top:4px;letter-spacing:1.5px;text-transform:uppercase}
+
+.f-features { position:absolute; top:756px; left:64px; right:64px; z-index:5; display:flex; flex-wrap:wrap; gap:10px; }
+.f-feat { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:100px; padding:9px 18px; font-size:13px; color:#AABBCC; display:flex; align-items:center; gap:7px; }
+.f-feat .dot{width:5px;height:5px;border-radius:50%;background:#FF5722;flex-shrink:0}
+
+.f-codebox { position:absolute; bottom:176px; right:64px; z-index:6; background:rgba(255,87,34,0.12); border:1.5px solid rgba(255,87,34,0.45); border-radius:6px; padding:12px 22px; text-align:center; }
+.f-codebox .cl{font-size:9px;color:#FF8A50;letter-spacing:4px;font-weight:600;margin-bottom:4px}
+.f-codebox .cv{font-family:'DM Sans',monospace;font-size:18px;color:#FFF;font-weight:700;letter-spacing:2px}
+
+.f-bottom { position:absolute; bottom:0; left:0; right:0; height:164px; z-index:5; background:linear-gradient(135deg,#FF5722,#E64A19); display:flex; align-items:center; padding:0 64px; gap:40px; }
+.f-bottom .bl{flex:1}
+.f-bottom .ft{font-size:11px;color:rgba(255,255,255,0.65);letter-spacing:5px;font-weight:500}
+.f-bottom .fb{font-family:'DM Serif Display',serif;font-size:50px;color:#FFF;line-height:1}
+.f-bottom .fn{font-size:12px;color:rgba(255,255,255,0.65);margin-top:3px}
+.f-bottom .dv{width:1px;height:80px;background:rgba(255,255,255,0.2)}
+.f-bottom .br{flex:1;display:flex;flex-direction:column;gap:7px}
+.f-bottom .bc{font-size:11px;color:rgba(255,255,255,0.65);letter-spacing:3px}
+.f-bottom .bd{font-family:'DM Serif Display',serif;font-size:30px;color:#FFF;line-height:1}
+.f-bottom .bu{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600}
 
 /* ── RESPONSIVE ── */
 @media (max-width:900px) {
@@ -314,8 +430,9 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
   .steps { grid-template-columns:1fr 1fr; }
   .steps::before { display:none; }
   .perf-extra { grid-template-columns:1fr; }
-  .cta-input-row { flex-direction:column; }
-  .cta-input-row input,.cta-input-row button { border-radius:4px; border:2px solid rgba(255,255,255,0.4); }
+  .flyer-layout { grid-template-columns:1fr; }
+  .flyer-form-panel { position:static; }
+  .flyer-preview-panel { order:-1; }
 }
 
 /* ── ANIMATIONS ── */
@@ -325,7 +442,6 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
 .hero-sub{animation:fadeUp .7s .2s ease both}
 .hero-buttons{animation:fadeUp .7s .3s ease both}
 .hero-card{animation:fadeUp .8s .2s ease both}
-.code-prompt{animation:fadeUp .7s .4s ease both}
 </style>
 </head>
 <body>
@@ -343,6 +459,7 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
     <a href="#curriculum">Curriculum</a>
     <a href="#performers">Top Performers</a>
     <a href="#how">How It Works</a>
+    <a href="#referral">Get Your Flyer</a>
     <a href="#apply" class="nav-cta">Apply Now →</a>
   </div>
 </nav>
@@ -369,16 +486,11 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
       </p>
 
       <div class="hero-buttons">
-        <a href="#apply" class="btn-primary">Apply for Cohort 1 →</a>
+        <a href="https://forms.gle/gq2hw8W1rKWVEjCW9" target="_blank" class="btn-primary">Apply for Cohort 1 →</a>
         <a href="#curriculum" class="btn-secondary">See the curriculum ↓</a>
       </div>
 
-      <div class="code-prompt">
-        <span class="cp-icon">🔑</span>
-        <span class="cp-text">You need an <strong>access code</strong> to apply. Get one from your community or at <strong>tinyurl.com/basestack</strong></span>
-      </div>
-
-      <p class="hero-note" style="margin-top:16px;">Registration closes <span>April 13, 2026</span> · Classes begin April 20</p>
+      <p class="hero-note" style="margin-top:20px;">Registration closes <span>April 13, 2026</span> · Classes begin April 20</p>
     </div>
 
     <!-- HERO CARD -->
@@ -398,15 +510,8 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
         <div class="hc-feat"><div class="icon">💼</div><div class="txt">Paid roles for top graduates</div></div>
         <div class="hc-feat"><div class="icon">📜</div><div class="txt">LinkedIn-verified certificate</div></div>
       </div>
-      <div class="hc-code-box">
-        <div class="hc-code-label">ENTER YOUR ACCESS CODE</div>
-        <div class="hc-code-input">
-          <input type="text" id="heroCode" placeholder="Your access code" maxlength="20" oninput="clearError('hero')">
-          <button onclick="goApply('hero')">Apply →</button>
-        </div>
-        <div id="heroError" class="code-error">⚠️ That code isn't recognised. Check your code from your community flyer or contact us at basestackacademy@gmail.com</div>
-        <div class="hc-code-note">An access code is required to apply</div>
-      </div>
+      <a href="https://forms.gle/gq2hw8W1rKWVEjCW9" target="_blank" class="hc-apply-btn">Apply for Cohort 1 →</a>
+      <p class="hc-note">Registration closes April 13, 2026 · 100 slots only</p>
     </div>
   </div>
 </section>
@@ -589,7 +694,7 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-title">Apply</div>
-        <div class="step-body">Submit the application form with your access code before April 13. 100 slots only. First come, first served.</div>
+        <div class="step-body">Submit the application form before April 13. 100 slots only. First come, first served.</div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -610,19 +715,84 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
   </div>
 </section>
 
+<!-- REFERRAL FLYER GENERATOR -->
+<section class="flyer-section" id="referral">
+  <div class="flyer-section-grid"></div>
+  <div class="section-inner">
+    <div class="section-label"><div class="dot"></div><span>Squad Leader Tool</span></div>
+    <h2 class="section-title" style="color:#FFF;">Get your<br><em>referral flyer.</em></h2>
+    <p class="section-sub">Are you a Squad Leader? Enter your WhatsApp number to generate a personalised flyer with your number as the referral code — ready to share in any group or community.</p>
+
+    <div class="flyer-layout">
+
+      <!-- FORM -->
+      <div class="flyer-form-panel">
+        <h3>Generate your flyer</h3>
+        <p>Your WhatsApp number will appear as the referral code. Anyone who signs up with your number gets tracked to you. Reach 10 referrals to qualify as a Squad Leader.</p>
+
+        <div class="ff-field">
+          <label>Your WhatsApp Number</label>
+          <input type="tel" id="waNumber" placeholder="e.g. 08012345678" maxlength="14" oninput="clearFlyerErr()">
+          <div class="ff-hint">Local or international format — e.g. 08012345678 or +2348012345678</div>
+          <div class="ff-error" id="flyerNumErr"></div>
+        </div>
+
+        <div class="ff-field">
+          <label>Your Name <span style="color:rgba(255,255,255,0.2);font-size:10px;letter-spacing:1px;">(OPTIONAL)</span></label>
+          <input type="text" id="leaderName" placeholder="e.g. Amara O." maxlength="30" oninput="updateBadgeLive()">
+          <div class="ff-hint">If provided, appears as "Shared by [Name]" on the flyer</div>
+        </div>
+
+        <div class="ff-divider"></div>
+
+        <button class="btn-flyer-gen" onclick="generateFlyer()">
+          <span id="flyerBtnText">Generate My Flyer →</span>
+        </button>
+
+        <button class="btn-flyer-dl" id="flyerDlBtn" onclick="downloadFlyer()">
+          ⬇ Download PNG (1080×1080)
+        </button>
+
+        <div class="flyer-how">
+          <h4>How to use it</h4>
+          <div class="flyer-how-steps">
+            <div class="flyer-how-step"><div class="n">1</div><span>Generate and download your flyer</span></div>
+            <div class="flyer-how-step"><div class="n">2</div><span>Share it in WhatsApp groups, communities, anywhere</span></div>
+            <div class="flyer-how-step"><div class="n">3</div><span>People enter your number as the referral code when they apply</span></div>
+            <div class="flyer-how-step"><div class="n">4</div><span>Reach 10 referrals to qualify as a Squad Leader</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREVIEW -->
+      <div class="flyer-preview-panel">
+        <div class="flyer-preview-label">Flyer Preview</div>
+        <div class="flyer-preview-wrap" id="flyerPreviewWrap">
+          <div class="flyer-placeholder" id="flyerPlaceholder">
+            <div class="icon">🖼️</div>
+            <p>Enter your WhatsApp number<br>and click Generate to preview<br>your personalised flyer</p>
+          </div>
+          <div class="flyer-generating" id="flyerGenerating">
+            <div class="spinner"></div>
+            <p>Generating your flyer...</p>
+          </div>
+          <img id="flyerPreviewImg" alt="Your referral flyer preview">
+        </div>
+        <p class="flyer-share-note">The downloaded file is 1080×1080px — optimised for WhatsApp and Instagram sharing.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- APPLY CTA -->
 <section class="cta-section" id="apply">
   <div class="section-inner" style="max-width:700px">
     <h2>Ready to build<br>in the cloud?</h2>
     <p>Registration closes <strong style="color:#FFF;">April 13, 2026.</strong><br>100 slots. The only free cohort. It does not repeat.</p>
-
-    <div class="cta-code-wrap">
-      <div class="cta-input-row">
-        <input type="text" id="ctaCode" placeholder="Enter your access code" maxlength="20" oninput="clearError('cta')">
-        <button onclick="goApply('cta')">Apply Now →</button>
-      </div>
-      <div id="ctaError" class="cta-error">⚠️ That code isn't recognised. Check the flyer you received or contact basestackacademy@gmail.com for your access code.</div>
-      <p class="cta-note">An access code is required · Enter it and click Apply to open the form</p>
+    <div class="cta-btn-wrap">
+      <a href="https://forms.gle/gq2hw8W1rKWVEjCW9" target="_blank" class="btn-cta-main">Apply Now →</a>
+      <p class="cta-note">Free to apply · 100 slots · Cohort 1 only</p>
     </div>
   </div>
 </section>
@@ -638,80 +808,185 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
       <a href="#curriculum">Curriculum</a>
       <a href="#performers">Top Performers</a>
       <a href="#how">How It Works</a>
+      <a href="#referral">Get Your Flyer</a>
       <a href="#apply">Apply</a>
     </div>
   </div>
 </footer>
 
+<!-- HIDDEN FLYER STAGE (off-screen, captured by html2canvas) -->
+<div class="flyer-stage">
+  <div class="flyer-el" id="flyerEl">
+    <div class="f-topbar"></div>
+    <div class="f-slash"></div>
+    <div class="f-slash2"></div>
+
+    <div class="f-logo">
+      <div class="f-logo-slabs"><span></span><span></span><span></span></div>
+      <div class="f-logo-words">
+        <div><span class="base">BASE</span><span class="stack">STACK</span></div>
+        <div class="acad">ACADEMY</div>
+      </div>
+    </div>
+
+    <div class="f-cohort">
+      <div class="c1">COHORT</div>
+      <div class="c2">01</div>
+      <div class="c3">APRIL 2026</div>
+    </div>
+
+    <div class="f-badge">
+      <span class="dot"></span>
+      <span class="txt" id="flyerBadge">AWS Cloud Engineering · Personal Referral</span>
+    </div>
+
+    <div class="f-headline">
+      <h1>Build.<br><em>Deploy.</em><br>Get Hired.</h1>
+      <div class="sub">The most structured free cloud programme in Nigeria.<br><strong>No experience. No tuition. Just show up.</strong></div>
+    </div>
+
+    <div class="f-stats">
+      <div class="f-stat"><div class="n">10</div><div class="u">Weeks</div><div class="l">Structured</div></div>
+      <div class="f-stat"><div class="n">48</div><div class="u">Lessons</div><div class="l">+ Live Labs</div></div>
+      <div class="f-stat"><div class="n">SAA</div><div class="u">Exam Prep</div><div class="l">Top 3 Grads</div></div>
+      <div class="f-stat"><div class="n">₦0</div><div class="u">Tuition</div><div class="l">100% Free</div></div>
+    </div>
+
+    <div class="f-features">
+      <div class="f-feat"><span class="dot"></span>Full LMS Access</div>
+      <div class="f-feat"><span class="dot"></span>EC2 · S3 · VPC · RDS · Lambda · IAM</div>
+      <div class="f-feat"><span class="dot"></span>Live Weekend Sessions</div>
+      <div class="f-feat"><span class="dot"></span>LinkedIn Certificate</div>
+      <div class="f-feat"><span class="dot"></span>Paid Roles for Top Graduates</div>
+    </div>
+
+    <div class="f-codebox">
+      <div class="cl">REFERRAL CODE</div>
+      <div class="cv" id="flyerCode">YOUR NUMBER</div>
+    </div>
+
+    <div class="f-bottom">
+      <div class="bl">
+        <div class="ft">TUITION</div>
+        <div class="fb">100% FREE</div>
+        <div class="fn">₦1,000 certificate fee at graduation only</div>
+      </div>
+      <div class="dv"></div>
+      <div class="br">
+        <div class="bc">REGISTRATION CLOSES</div>
+        <div class="bd">April 13, 2026</div>
+        <div class="bu">tinyurl.com/basestack</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 const FORM_URL = 'https://forms.gle/gq2hw8W1rKWVEjCW9';
+let generatedCanvas = null;
 
-// Valid access codes — case-insensitive
-const VALID_CODES = [
-  'BASESTACK',
-  'DL4ALL CDS',
-  'DL4ALL',
-  'LAUTECH-AWS',
-  'CAMPUS-AWS',
-  'GDG-MAID',
-  'SOOMA-TECH',
-];
-
-function isValidCode(code) {
-  return VALID_CODES.includes(code.trim().toUpperCase());
+/* ── Flyer generator ── */
+function clearFlyerErr() {
+  document.getElementById('flyerNumErr').classList.remove('show');
 }
 
-function clearError(context) {
-  document.getElementById(context === 'hero' ? 'heroError' : 'ctaError').classList.remove('show');
+function formatNumber(raw) {
+  const cleaned = raw.replace(/\s+/g, '').replace(/-/g, '');
+  if (cleaned.startsWith('+234')) return cleaned;
+  if (cleaned.startsWith('234'))  return '+' + cleaned;
+  if (cleaned.startsWith('0') && cleaned.length >= 10) return '+234' + cleaned.slice(1);
+  return cleaned;
 }
 
-function goApply(context) {
-  const inputId = context === 'hero' ? 'heroCode' : 'ctaCode';
-  const errorId = context === 'hero' ? 'heroError' : 'ctaError';
-  const input   = document.getElementById(inputId);
-  const error   = document.getElementById(errorId);
-  const code    = input.value.trim();
+function isValidNumber(raw) {
+  const cleaned = raw.replace(/[\s\-\+]/g, '');
+  return /^(234|0)[789][01]\d{8}$/.test(cleaned);
+}
 
-  if (!code) {
-    error.textContent = '⚠️ An access code is required to apply. Get yours from your community flyer or contact basestackacademy@gmail.com';
-    error.classList.add('show');
-    input.focus();
+function updateBadgeLive() {
+  if (!generatedCanvas) return;
+  const name = document.getElementById('leaderName').value.trim();
+  document.getElementById('flyerBadge').textContent =
+    name ? `Shared by ${name} · Squad Leader` : 'AWS Cloud Engineering · Personal Referral';
+}
+
+function generateFlyer() {
+  const raw    = document.getElementById('waNumber').value.trim();
+  const name   = document.getElementById('leaderName').value.trim();
+  const errEl  = document.getElementById('flyerNumErr');
+
+  if (!raw) {
+    errEl.textContent = 'Please enter your WhatsApp number.';
+    errEl.classList.add('show');
+    return;
+  }
+  if (!isValidNumber(raw)) {
+    errEl.textContent = "That doesn't look like a valid Nigerian number. Try: 08012345678 or +2348012345678";
+    errEl.classList.add('show');
     return;
   }
 
-  if (!isValidCode(code)) {
-    error.textContent = '⚠️ That code isn\'t recognised. Double-check the spelling or contact basestackacademy@gmail.com for help.';
-    error.classList.add('show');
-    input.focus();
-    return;
-  }
+  errEl.classList.remove('show');
+  const formatted = formatNumber(raw);
 
-  // Valid — open the form and show the reminder
-  error.classList.remove('show');
-  window.open(FORM_URL, '_blank');
-  showReminder(code.toUpperCase());
+  document.getElementById('flyerCode').textContent  = formatted;
+  document.getElementById('flyerBadge').textContent =
+    name ? `Shared by ${name} · Squad Leader` : 'AWS Cloud Engineering · Personal Referral';
+
+  // Show spinner
+  document.getElementById('flyerPlaceholder').style.display  = 'none';
+  document.getElementById('flyerPreviewImg').style.display   = 'none';
+  const genEl = document.getElementById('flyerGenerating');
+  genEl.style.display = 'flex';
+
+  const btn = document.querySelector('.btn-flyer-gen');
+  btn.disabled = true;
+  document.getElementById('flyerBtnText').textContent = 'Generating...';
+
+  setTimeout(() => {
+    html2canvas(document.getElementById('flyerEl'), {
+      width: 1080, height: 1080, scale: 1,
+      useCORS: true, allowTaint: true,
+      backgroundColor: '#0A2342', logging: false,
+    }).then(canvas => {
+      generatedCanvas = canvas;
+      const img = document.getElementById('flyerPreviewImg');
+      img.src = canvas.toDataURL('image/png');
+      img.style.display = 'block';
+      genEl.style.display = 'none';
+
+      btn.disabled = false;
+      document.getElementById('flyerBtnText').textContent = 'Regenerate →';
+
+      const dlBtn = document.getElementById('flyerDlBtn');
+      dlBtn.classList.add('visible');
+    }).catch(() => {
+      genEl.style.display = 'none';
+      document.getElementById('flyerPlaceholder').style.display = 'block';
+      btn.disabled = false;
+      document.getElementById('flyerBtnText').textContent = 'Generate My Flyer →';
+      errEl.textContent = 'Something went wrong generating the flyer. Please try again.';
+      errEl.classList.add('show');
+    });
+  }, 100);
 }
 
-// Allow Enter key in inputs
+function downloadFlyer() {
+  if (!generatedCanvas) return;
+  const name     = document.getElementById('leaderName').value.trim();
+  const safeName = name ? name.replace(/\s+/g, '_') : 'MyReferral';
+  const link     = document.createElement('a');
+  link.download  = `BaseStack_Referral_${safeName}.png`;
+  link.href      = generatedCanvas.toDataURL('image/png');
+  link.click();
+}
+
+/* ── Enter key support ── */
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('heroCode').addEventListener('keydown', e => { if (e.key === 'Enter') goApply('hero'); });
-  document.getElementById('ctaCode').addEventListener('keydown',  e => { if (e.key === 'Enter') goApply('cta'); });
+  document.getElementById('waNumber').addEventListener('keydown', e => {
+    if (e.key === 'Enter') generateFlyer();
+  });
 });
-
-function showReminder(code) {
-  const overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(10,35,66,0.92);z-index:999;display:flex;align-items:center;justify-content:center;padding:24px;';
-  overlay.innerHTML = `
-    <div style="background:#0D2E58;border:1px solid rgba(255,87,34,0.4);border-radius:12px;padding:48px 40px;max-width:480px;width:100%;text-align:center;">
-      <div style="font-size:36px;margin-bottom:16px;">🔑</div>
-      <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#FFF;margin-bottom:12px;">Remember your code</div>
-      <div style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:28px;line-height:1.6;">Enter this in the <strong style="color:#FFF;">Access Code</strong> field on the form that just opened:</div>
-      <div style="background:rgba(255,87,34,0.12);border:1.5px solid rgba(255,87,34,0.5);border-radius:6px;padding:16px 24px;font-size:28px;font-weight:700;color:#FFF;letter-spacing:4px;margin-bottom:28px;">${code}</div>
-      <button onclick="this.closest('[style*=fixed]').remove()" style="background:#FF5722;color:#FFF;border:none;border-radius:4px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Got it — I have the form open ✓</button>
-    </div>
-  `;
-  document.body.appendChild(overlay);
-}
 </script>
 
 </body>
