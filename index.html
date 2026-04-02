@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BaseStack Academy — AWS Cloud Engineering Accelerator</title>
-<meta name="description" content="10-Week AWS Cloud Engineering Accelerator. Structured. Beginner-friendly. Top 3 graduates win $100 AWS exam vouchers. Cohort 1 — April 2026.">
+<meta name="description" content="10-Week AWS Cloud Engineering Accelerator. Structured. Beginner-friendly. 100 slots only. Cohort 1 — April 2026. Nigeria's only free cloud engineering programme.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -56,7 +56,7 @@ nav {
   min-height:100vh; background:var(--navy);
   position:relative; overflow:hidden;
   display:flex; align-items:center;
-  padding:100px 5% 80px;
+  padding:120px 5% 80px;
 }
 .hero-grid {
   position:absolute; inset:0;
@@ -154,17 +154,14 @@ nav {
 /* Code input box on card */
 .hc-code-box { margin-top:24px; }
 .hc-code-label { font-size:11px; color:var(--ora2); letter-spacing:3px; font-weight:600; margin-bottom:8px; }
-.hc-code-input {
-  display:flex; gap:8px;
-}
+.hc-code-input { display:flex; gap:8px; }
 .hc-code-input input {
   flex:1; background:rgba(255,255,255,0.07);
   border:1px solid rgba(255,87,34,0.35);
   border-radius:4px; padding:12px 16px;
   color:#FFF; font-size:16px; font-weight:700;
   letter-spacing:3px; text-transform:uppercase;
-  font-family:'DM Sans',sans-serif;
-  outline:none;
+  font-family:'DM Sans',sans-serif; outline:none;
 }
 .hc-code-input input::placeholder { color:rgba(255,255,255,0.25); font-weight:300; letter-spacing:1px; font-size:13px; text-transform:none; }
 .hc-code-input input:focus { border-color:var(--orange); }
@@ -177,6 +174,15 @@ nav {
 }
 .hc-code-input button:hover { background:#E64A19; }
 .hc-code-note { font-size:11px; color:rgba(255,255,255,0.3); margin-top:8px; text-align:center; }
+
+/* Code error state */
+.code-error {
+  display:none; margin-top:10px;
+  background:rgba(220,50,50,0.12); border:1px solid rgba(220,50,50,0.35);
+  border-radius:4px; padding:10px 14px;
+  font-size:13px; color:#FF8A8A; line-height:1.5;
+}
+.code-error.show { display:block; }
 
 /* ── SECTIONS ── */
 section { padding:100px 5%; }
@@ -212,23 +218,34 @@ section { padding:100px 5%; }
 .cn-pill { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:100px; padding:8px 20px; font-size:13px; color:rgba(255,255,255,0.6); display:flex; align-items:center; gap:8px; }
 .cn-pill .dot { width:5px; height:5px; border-radius:50%; background:var(--orange); }
 
-/* ── PRIZES ── */
-.prizes { background:#FFF; }
-.prize-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:60px; }
-.prize-card { border-radius:10px; overflow:hidden; border:1px solid #E8EDF2; }
-.prize-top { padding:40px 32px 32px; display:flex; flex-direction:column; align-items:center; text-align:center; }
-.prize-card:nth-child(1) .prize-top { background:linear-gradient(135deg,var(--navy),#1A3A6A); }
-.prize-card:nth-child(2) .prize-top { background:linear-gradient(135deg,#7D4000,#B05A00); }
-.prize-card:nth-child(3) .prize-top { background:linear-gradient(135deg,#3A3A3A,#5A5A5A); }
-.prize-medal { font-size:48px; margin-bottom:16px; }
-.prize-place { font-size:11px; color:rgba(255,255,255,0.6); letter-spacing:4px; font-weight:600; margin-bottom:8px; }
-.prize-value { font-family:'DM Serif Display',serif; font-size:36px; color:#FFF; }
-.prize-sub { font-size:13px; color:rgba(255,255,255,0.6); margin-top:6px; }
-.prize-bottom { padding:24px 32px; background:var(--grey); }
-.prize-detail { font-size:14px; color:#556677; line-height:1.6; }
-.prize-extra { margin-top:40px; background:var(--grey); border:1px solid #E8EDF2; border-left:4px solid var(--orange); border-radius:6px; padding:28px 32px; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+/* ── TOP PERFORMERS ── */
+.performers { background:#FFF; }
+.perf-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:60px; }
+.perf-card { border-radius:10px; overflow:hidden; border:1px solid #E8EDF2; }
+.perf-top { padding:40px 32px 32px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.perf-card:nth-child(1) .perf-top { background:linear-gradient(135deg,var(--navy),#1A3A6A); }
+.perf-card:nth-child(2) .perf-top { background:linear-gradient(135deg,#7D4000,#B05A00); }
+.perf-card:nth-child(3) .perf-top { background:linear-gradient(135deg,#3A3A3A,#5A5A5A); }
+.perf-medal { font-size:48px; margin-bottom:16px; }
+.perf-place { font-size:11px; color:rgba(255,255,255,0.6); letter-spacing:4px; font-weight:600; margin-bottom:8px; }
+.perf-value { font-family:'DM Serif Display',serif; font-size:26px; color:#FFF; line-height:1.2; }
+.perf-sub { font-size:13px; color:rgba(255,255,255,0.6); margin-top:6px; }
+.perf-bottom { padding:24px 32px; background:var(--grey); }
+.perf-detail { font-size:14px; color:#556677; line-height:1.6; }
+.perf-extra { margin-top:40px; background:var(--grey); border:1px solid #E8EDF2; border-left:4px solid var(--orange); border-radius:6px; padding:28px 32px; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
 .pe-item .pe-label { font-size:11px;color:var(--orange);letter-spacing:3px;font-weight:600;margin-bottom:8px; }
 .pe-item .pe-text { font-size:15px;color:var(--text);line-height:1.5; }
+
+/* ── NOTICE BOX ── */
+.notice-box {
+  margin-top:48px;
+  background:rgba(255,87,34,0.05);
+  border:1px solid rgba(255,87,34,0.2);
+  border-left:4px solid var(--orange);
+  border-radius:6px; padding:20px 24px;
+  font-size:14px; color:#556677; line-height:1.6;
+}
+.notice-box strong { color:var(--text); }
 
 /* ── HOW IT WORKS ── */
 .how { background:var(--grey); }
@@ -244,7 +261,6 @@ section { padding:100px 5%; }
 .cta-section h2 { font-family:'DM Serif Display',serif; font-size:clamp(40px,5vw,70px); color:#FFF; line-height:1; margin-bottom:20px; }
 .cta-section p { font-size:20px;color:rgba(255,255,255,0.8);font-weight:300;margin-bottom:44px; }
 
-/* CTA code input inline */
 .cta-code-wrap { display:flex; flex-direction:column; align-items:center; gap:16px; }
 .cta-input-row { display:flex; gap:0; max-width:520px; width:100%; }
 .cta-input-row input {
@@ -269,6 +285,13 @@ section { padding:100px 5%; }
 }
 .cta-input-row button:hover { background:var(--navy); color:#FFF; border-color:var(--navy); }
 .cta-note { font-size:13px; color:rgba(255,255,255,0.55); letter-spacing:.5px; }
+.cta-error {
+  display:none; max-width:520px; width:100%;
+  background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.3);
+  border-radius:4px; padding:12px 16px;
+  font-size:14px; color:#FFF; text-align:left; line-height:1.5;
+}
+.cta-error.show { display:block; }
 
 /* ── FOOTER ── */
 footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,34,0.1); }
@@ -281,15 +304,16 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
 
 /* ── RESPONSIVE ── */
 @media (max-width:900px) {
+  .hero { padding-top:100px; }
   .hero-inner { grid-template-columns:1fr; gap:48px; }
   .hero-card { display:none; }
   .nav-links { display:none; }
   .why-grid { grid-template-columns:1fr; }
   .week-grid { grid-template-columns:repeat(2,1fr); }
-  .prize-grid { grid-template-columns:1fr; }
+  .perf-grid { grid-template-columns:1fr; }
   .steps { grid-template-columns:1fr 1fr; }
   .steps::before { display:none; }
-  .prize-extra { grid-template-columns:1fr; }
+  .perf-extra { grid-template-columns:1fr; }
   .cta-input-row { flex-direction:column; }
   .cta-input-row input,.cta-input-row button { border-radius:4px; border:2px solid rgba(255,255,255,0.4); }
 }
@@ -317,7 +341,7 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
   </a>
   <div class="nav-links">
     <a href="#curriculum">Curriculum</a>
-    <a href="#prizes">Prizes</a>
+    <a href="#performers">Top Performers</a>
     <a href="#how">How It Works</a>
     <a href="#apply" class="nav-cta">Apply Now →</a>
   </div>
@@ -333,15 +357,15 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
     <div>
       <div class="hero-eyebrow">
         <div class="dot"></div>
-        <span>Cohort 1 · April 2026 · AWS Cloud Engineering</span>
+        <span>Cohort 1 · April 2026 · AWS Cloud Engineering · 100 Slots Only</span>
       </div>
 
-      <h1>Build.<br><em>Deploy.</em><br>Get Certified.</h1>
+      <h1>Build.<br><em>Deploy.</em><br>Get Hired.</h1>
 
       <p class="hero-sub">
-        10 weeks of structured AWS Cloud Engineering on a full LMS platform.
-        <strong>Beginner-friendly. Hands-on. Console-first.</strong>
-        Top 3 graduates stand a chance to win a $100 AWS exam voucher.
+        10 weeks of structured AWS Cloud Engineering — on a full LMS platform, with live weekend sessions.
+        <strong>Beginner-friendly. Hands-on. Console-first. Completely free.</strong>
+        This is a one-time programme. It does not repeat.
       </p>
 
       <div class="hero-buttons">
@@ -351,7 +375,7 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
 
       <div class="code-prompt">
         <span class="cp-icon">🔑</span>
-        <span class="cp-text">Have an access code? <strong>Enter it on the application form</strong> to unlock your slot.</span>
+        <span class="cp-text">You need an <strong>access code</strong> to apply. Get one from your community or at <strong>tinyurl.com/basestack</strong></span>
       </div>
 
       <p class="hero-note" style="margin-top:16px;">Registration closes <span>April 13, 2026</span> · Classes begin April 20</p>
@@ -363,24 +387,25 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
       <div class="hc-grid">
         <div class="hc-stat"><div class="n">10</div><div class="l">Weeks</div></div>
         <div class="hc-stat"><div class="n">48</div><div class="l">Lessons</div></div>
-        <div class="hc-stat"><div class="n">$100</div><div class="l">Voucher Prize</div></div>
+        <div class="hc-stat"><div class="n">100</div><div class="l">Slots Only</div></div>
         <div class="hc-stat"><div class="n">Apr 20</div><div class="l">Start Date</div></div>
       </div>
       <div class="hc-divider"></div>
       <div class="hc-features">
-        <div class="hc-feat"><div class="icon">☁️</div><div class="txt">Full LMS — 48 video lessons + labs</div></div>
+        <div class="hc-feat"><div class="icon">☁️</div><div class="txt">Full LMS — 48 lessons + hands-on labs</div></div>
         <div class="hc-feat"><div class="icon">🎯</div><div class="txt">Live weekend review sessions</div></div>
-        <div class="hc-feat"><div class="icon">🏆</div><div class="txt">Top 3 stand a chance to win $100 AWS vouchers</div></div>
+        <div class="hc-feat"><div class="icon">🏆</div><div class="txt">Exam prep support for top graduates</div></div>
         <div class="hc-feat"><div class="icon">💼</div><div class="txt">Paid roles for top graduates</div></div>
         <div class="hc-feat"><div class="icon">📜</div><div class="txt">LinkedIn-verified certificate</div></div>
       </div>
       <div class="hc-code-box">
-        <div class="hc-code-label">HAVE AN ACCESS CODE?</div>
+        <div class="hc-code-label">ENTER YOUR ACCESS CODE</div>
         <div class="hc-code-input">
-          <input type="text" id="heroCode" placeholder="Enter your code here" maxlength="20">
-          <button onclick="goApply()">Apply →</button>
+          <input type="text" id="heroCode" placeholder="Your access code" maxlength="20" oninput="clearError('hero')">
+          <button onclick="goApply('hero')">Apply →</button>
         </div>
-        <div class="hc-code-note">Enter your code then click Apply to open the registration form</div>
+        <div id="heroError" class="code-error">⚠️ That code isn't recognised. Check your code from your community flyer or contact us at basestackacademy@gmail.com</div>
+        <div class="hc-code-note">An access code is required to apply</div>
       </div>
     </div>
   </div>
@@ -416,8 +441,8 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
       </div>
       <div class="why-card">
         <div class="wc-icon">🏆</div>
-        <div class="wc-title">Real Prizes for Top Performers</div>
-        <div class="wc-body">The Top 3 students by exam score each stand a chance to win a $100 AWS Cloud Practitioner Exam Voucher — the first step on the AWS certification ladder.</div>
+        <div class="wc-title">Recognition for Top Performers</div>
+        <div class="wc-body">The top graduates are publicly recognised on the leaderboard and receive dedicated exam preparation support toward AWS certification.</div>
       </div>
       <div class="why-card">
         <div class="wc-icon">💼</div>
@@ -484,7 +509,7 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
       <div class="week-card special">
         <div class="wk-num">WEEK 10</div>
         <div class="wk-title">Graduation</div>
-        <div class="wk-topics">Certificate issuance · Voucher awards · Paid role offers · Cohort 2 preview</div>
+        <div class="wk-topics">Certificate issuance · Top performer recognition · Paid role offers · Cohort 2 preview</div>
       </div>
     </div>
 
@@ -497,53 +522,53 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
   </div>
 </section>
 
-<!-- PRIZES -->
-<section class="prizes" id="prizes">
+<!-- TOP PERFORMERS -->
+<section class="performers" id="performers">
   <div class="section-inner">
-    <div class="section-label"><div class="dot"></div><span>Prizes & Rewards</span></div>
-    <h2 class="section-title">Win more than<br><em>a certificate.</em></h2>
-    <p class="section-sub">Performance is rewarded. The top students graduate with real assets — exam vouchers, paid roles, and a career head start.</p>
+    <div class="section-label"><div class="dot"></div><span>Top Performers</span></div>
+    <h2 class="section-title">Earn more than<br><em>a certificate.</em></h2>
+    <p class="section-sub">Performance is recognised. The top students graduate with real advantages — leaderboard standing, certification support, and a career head start.</p>
 
-    <div class="prize-grid">
-      <div class="prize-card">
-        <div class="prize-top">
-          <div class="prize-medal">🥇</div>
-          <div class="prize-place">1ST PLACE</div>
-          <div class="prize-value">$100</div>
-          <div class="prize-sub">AWS Cloud Practitioner Voucher</div>
+    <div class="perf-grid">
+      <div class="perf-card">
+        <div class="perf-top">
+          <div class="perf-medal">🥇</div>
+          <div class="perf-place">1ST PLACE</div>
+          <div class="perf-value">AWS Exam<br>Prep Support</div>
+          <div class="perf-sub">Top of the leaderboard</div>
         </div>
-        <div class="prize-bottom">
-          <div class="prize-detail">Fully-funded AWS Cloud Practitioner Exam — the first globally recognised cloud certification. Value: $100 / ₦160,000+.</div>
-        </div>
-      </div>
-      <div class="prize-card">
-        <div class="prize-top">
-          <div class="prize-medal">🥈</div>
-          <div class="prize-place">2ND PLACE</div>
-          <div class="prize-value">$100</div>
-          <div class="prize-sub">AWS Cloud Practitioner Voucher</div>
-        </div>
-        <div class="prize-bottom">
-          <div class="prize-detail">Same fully-funded AWS exam voucher. Second place is still a winner — the certification path to cloud career starts here.</div>
+        <div class="perf-bottom">
+          <div class="perf-detail">The highest-scoring graduate receives dedicated AWS exam preparation support to help them pursue their first certification after the programme.</div>
         </div>
       </div>
-      <div class="prize-card">
-        <div class="prize-top">
-          <div class="prize-medal">🥉</div>
-          <div class="prize-place">3RD PLACE</div>
-          <div class="prize-value">$100</div>
-          <div class="prize-sub">AWS Cloud Practitioner Voucher</div>
+      <div class="perf-card">
+        <div class="perf-top">
+          <div class="perf-medal">🥈</div>
+          <div class="perf-place">2ND PLACE</div>
+          <div class="perf-value">AWS Exam<br>Prep Support</div>
+          <div class="perf-sub">Second on the leaderboard</div>
         </div>
-        <div class="prize-bottom">
-          <div class="prize-detail">Top 3 all stand a chance to win. Study seriously for 10 weeks and a paid AWS certification at the end is entirely within reach.</div>
+        <div class="perf-bottom">
+          <div class="perf-detail">Second place receives the same exam preparation support. Work hard, finish high, and leave with the foundation for a real cloud certification path.</div>
+        </div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-top">
+          <div class="perf-medal">🥉</div>
+          <div class="perf-place">3RD PLACE</div>
+          <div class="perf-value">AWS Exam<br>Prep Support</div>
+          <div class="perf-sub">Third on the leaderboard</div>
+        </div>
+        <div class="perf-bottom">
+          <div class="perf-detail">All three podium finishers receive exam prep support. Ten structured weeks of effort is how you get here. It is entirely within reach.</div>
         </div>
       </div>
     </div>
 
-    <div class="prize-extra">
+    <div class="perf-extra">
       <div class="pe-item">
         <div class="pe-label">TOP 10 GRADUATES</div>
-        <div class="pe-text">Offered paid Community Manager and Squad Leader roles in Cohort 2.</div>
+        <div class="pe-text">Offered paid Community Manager and Squad Leader roles in Cohort 2. Your cloud career can start the moment you graduate.</div>
       </div>
       <div class="pe-item">
         <div class="pe-label">ALL GRADUATES</div>
@@ -564,7 +589,7 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-title">Apply</div>
-        <div class="step-body">Submit the application form before April 13. Enter your access code if you have one. Slot secured.</div>
+        <div class="step-body">Submit the application form with your access code before April 13. 100 slots only. First come, first served.</div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -579,7 +604,7 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-title">Graduate</div>
-        <div class="step-body">Week 9 final exam. Week 10 graduation, certificate issuance, prize announcements, and paid role offers.</div>
+        <div class="step-body">Week 9 final exam. Week 10 graduation, certificate issuance, top performer recognition, and paid role offers.</div>
       </div>
     </div>
   </div>
@@ -589,14 +614,15 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
 <section class="cta-section" id="apply">
   <div class="section-inner" style="max-width:700px">
     <h2>Ready to build<br>in the cloud?</h2>
-    <p>Registration closes April 13, 2026.<br>Cohort 1 is a one-time intake — it does not repeat.</p>
+    <p>Registration closes <strong style="color:#FFF;">April 13, 2026.</strong><br>100 slots. The only free cohort. It does not repeat.</p>
 
     <div class="cta-code-wrap">
       <div class="cta-input-row">
-        <input type="text" id="ctaCode" placeholder="Enter your access code" maxlength="20">
-        <button onclick="goApply()">Apply Now →</button>
+        <input type="text" id="ctaCode" placeholder="Enter your access code" maxlength="20" oninput="clearError('cta')">
+        <button onclick="goApply('cta')">Apply Now →</button>
       </div>
-      <p class="cta-note">Enter your access code and click Apply — the registration form opens with your code pre-noted</p>
+      <div id="ctaError" class="cta-error">⚠️ That code isn't recognised. Check the flyer you received or contact basestackacademy@gmail.com for your access code.</div>
+      <p class="cta-note">An access code is required · Enter it and click Apply to open the form</p>
     </div>
   </div>
 </section>
@@ -610,7 +636,7 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
     </div>
     <div class="footer-links">
       <a href="#curriculum">Curriculum</a>
-      <a href="#prizes">Prizes</a>
+      <a href="#performers">Top Performers</a>
       <a href="#how">How It Works</a>
       <a href="#apply">Apply</a>
     </div>
@@ -620,25 +646,57 @@ footer { background:#060F1A; padding:48px 5%; border-top:1px solid rgba(255,87,3
 <script>
 const FORM_URL = 'https://forms.gle/gq2hw8W1rKWVEjCW9';
 
-function goApply() {
-  const heroInput = document.getElementById('heroCode');
-  const ctaInput  = document.getElementById('ctaCode');
-  const code = (heroInput && heroInput.value.trim()) || (ctaInput && ctaInput.value.trim()) || '';
+// Valid access codes — case-insensitive
+const VALID_CODES = [
+  'BASESTACK',
+  'DL4ALL CDS',
+  'DL4ALL',
+  'LAUTECH-AWS',
+  'CAMPUS-AWS',
+  'GDG-MAID',
+  'SOOMA-TECH',
+];
+
+function isValidCode(code) {
+  return VALID_CODES.includes(code.trim().toUpperCase());
+}
+
+function clearError(context) {
+  document.getElementById(context === 'hero' ? 'heroError' : 'ctaError').classList.remove('show');
+}
+
+function goApply(context) {
+  const inputId = context === 'hero' ? 'heroCode' : 'ctaCode';
+  const errorId = context === 'hero' ? 'heroError' : 'ctaError';
+  const input   = document.getElementById(inputId);
+  const error   = document.getElementById(errorId);
+  const code    = input.value.trim();
 
   if (!code) {
-    // No code — go straight to form, let them fill it in manually
-    window.open(FORM_URL, '_blank');
+    error.textContent = '⚠️ An access code is required to apply. Get yours from your community flyer or contact basestackacademy@gmail.com';
+    error.classList.add('show');
+    input.focus();
     return;
   }
 
-  // Has a code — open form (Google Forms doesn't accept prefill for this field
-  // but we store the code in sessionStorage so the user sees a reminder)
-  sessionStorage.setItem('accessCode', code.toUpperCase());
-  window.open(FORM_URL, '_blank');
+  if (!isValidCode(code)) {
+    error.textContent = '⚠️ That code isn\'t recognised. Double-check the spelling or contact basestackacademy@gmail.com for help.';
+    error.classList.add('show');
+    input.focus();
+    return;
+  }
 
-  // Show a friendly reminder overlay
+  // Valid — open the form and show the reminder
+  error.classList.remove('show');
+  window.open(FORM_URL, '_blank');
   showReminder(code.toUpperCase());
 }
+
+// Allow Enter key in inputs
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('heroCode').addEventListener('keydown', e => { if (e.key === 'Enter') goApply('hero'); });
+  document.getElementById('ctaCode').addEventListener('keydown',  e => { if (e.key === 'Enter') goApply('cta'); });
+});
 
 function showReminder(code) {
   const overlay = document.createElement('div');
@@ -647,9 +705,9 @@ function showReminder(code) {
     <div style="background:#0D2E58;border:1px solid rgba(255,87,34,0.4);border-radius:12px;padding:48px 40px;max-width:480px;width:100%;text-align:center;">
       <div style="font-size:36px;margin-bottom:16px;">🔑</div>
       <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#FFF;margin-bottom:12px;">Remember your code</div>
-      <div style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:28px;line-height:1.6;">Enter this code in the <strong style="color:#FFF;">Community VIP Scholarship Code</strong> field on the form that just opened:</div>
+      <div style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:28px;line-height:1.6;">Enter this in the <strong style="color:#FFF;">Access Code</strong> field on the form that just opened:</div>
       <div style="background:rgba(255,87,34,0.12);border:1.5px solid rgba(255,87,34,0.5);border-radius:6px;padding:16px 24px;font-size:28px;font-weight:700;color:#FFF;letter-spacing:4px;margin-bottom:28px;">${code}</div>
-      <button onclick="this.closest('div[style]').remove()" style="background:#FF5722;color:#FFF;border:none;border-radius:4px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Got it — I have the form open ✓</button>
+      <button onclick="this.closest('[style*=fixed]').remove()" style="background:#FF5722;color:#FFF;border:none;border-radius:4px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Got it — I have the form open ✓</button>
     </div>
   `;
   document.body.appendChild(overlay);
